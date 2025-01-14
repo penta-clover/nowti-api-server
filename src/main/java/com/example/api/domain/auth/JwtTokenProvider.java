@@ -1,4 +1,4 @@
-package com.example.api.domain;
+package com.example.api.domain.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -13,7 +13,7 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
     private final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    private final long expirationTime = 1000 * 60 * 60;
+    private final long expirationTime = 1000 * 60 * 60 * 3; // 3 hours
 
     public String generateToken(String username) {
         Date now = new Date();

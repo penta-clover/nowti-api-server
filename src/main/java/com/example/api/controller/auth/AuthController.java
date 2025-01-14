@@ -1,5 +1,6 @@
-package com.example.api.controller;
+package com.example.api.controller.auth;
 
+import com.example.api.controller.auth.dto.LoginResponse;
 import com.example.api.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +17,16 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String username) {
+    public ResponseEntity<Object> login(@RequestParam String username) {
         log.debug("login request of {}", username);
         String token = authService.login(username);
-        return ResponseEntity.ok("Bearer " + token);
+        return ResponseEntity.ok(new LoginResponse(token));
     }
 
     @GetMapping("/validate")
-    public ResponseEntity<String> validateToken(@RequestParam("Authorization") String authorizationHeader) {
+    public ResponseEntity<String> validateToken(@RequestHeader("Authorization") String authorizationHeader) {
         String token = authorizationHeader.replace("Bearer ", "");
         boolean isValid = authService.validateToken(token);
-        return ResponseEntity.ok(isValid ? "Token is valid" : "Invalid token");
+        return ResponseEntity.ok(isValid ? "{ isValid: true }" : "{ isValid: false }");
     }
 }
