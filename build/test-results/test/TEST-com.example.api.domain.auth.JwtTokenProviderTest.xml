@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.api.domain.auth.JwtTokenProviderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-14T19:41:42" hostname="choehyeonjun-ui-MacBookPro.local" time="0.06">
+  <properties/>
+  <testcase name="validateToken()" classname="com.example.api.domain.auth.JwtTokenProviderTest" time="0.06"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
